@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 时代儿童核心能力培养研究报告</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #818cf8;
+      --primary-bg: #eef2ff;
+      --accent: #06b6d4;
+      --accent-bg: #ecfeff;
+      --green: #10b981;
+      --green-bg: #d1fae5;
+      --orange: #f59e0b;
+      --orange-bg: #fef3c7;
+      --red: #ef4444;
+      --red-bg: #fee2e2;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                   "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ───── NAV ───── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 56px;
+      overflow-x: auto;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    nav a {
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all .2s;
+    }
+    nav a:hover, nav a.active {
+      color: var(--primary);
+      background: var(--primary-bg);
+    }
+
+    /* ───── HERO ───── */
+    .hero {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+      color: #fff;
+      padding: 64px 24px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 100px;
+      padding: 4px 16px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(24px, 5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 16px;
+      opacity: .85;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-meta span {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 6px 16px;
+      font-size: 13px;
+    }
+
+    /* ───── LAYOUT ───── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .section-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    /* ───── CARDS ───── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    /* ───── EXECUTIVE SUMMARY ───── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .summary-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary);
+    }
+    .summary-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+    .summary-card p, .summary-card li {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    .summary-card ul { padding-left: 16px; }
+    .summary-card li { margin-bottom: 6px; }
+
+    .insight-box {
+      background: linear-gradient(135deg, #eef2ff, #f0fdff);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid #c7d2fe;
+    }
+    .insight-box h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+    .insight-box blockquote {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--text);
+      border-left: 3px solid var(--primary);
+      padding-left: 16px;
+      margin-top: 12px;
+    }
+
+    /* ───── FRAMEWORK PYRAMID ───── */
+    .pyramid {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 32px auto;
+      max-width: 680px;
+    }
+    .pyramid-layer {
+      border-radius: 10px;
+      padding: 20px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .pyramid-layer.l3 {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+    }
+    .pyramid-layer.l2 {
+      background: linear-gradient(135deg, #0891b2, #06b6d4);
+      color: #fff;
+    }
+    .pyramid-layer.l1 {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #fff;
+    }
+    .pyramid-layer-label {
+      font-size: 13px;
+      font-weight: 800;
+      opacity: .9;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .pyramid-layer-content h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pyramid-layer-content p {
+      font-size: 13px;
+      opacity: .9;
+    }
+
+    .pyramid-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* ───── TABLES ───── */
+    .table-wrap { overflow-x: auto; margin: 20px 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead tr {
+      background: var(--primary-bg);
+    }
+    th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--primary);
+      border-bottom: 2px solid #c7d2fe;
+    }
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:hover td { background: #fafafa; }
+    .stars { color: #f59e0b; letter-spacing: 2px; }
+
+    .subsection-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--primary-bg);
+      color: var(--primary);
+    }
+
+    /* ───── QUIZ ───── */
+    .quiz-intro {
+      background: var(--primary-bg);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .quiz-group { margin-bottom: 36px; }
+    .quiz-group-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      padding: 4px 12px;
+      background: var(--border);
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .quiz-question {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: border-color .2s;
+    }
+    .quiz-question.answered { border-color: var(--primary-light); }
+    .quiz-q-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .quiz-q-num {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 1px 7px;
+      margin-right: 8px;
+    }
+    .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+    .quiz-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      transition: all .2s;
+      font-size: 14px;
+    }
+    .quiz-option:hover { border-color: var(--primary-light); background: var(--primary-bg); }
+    .quiz-option input { margin-top: 2px; accent-color: var(--primary); cursor: pointer; }
+    .quiz-option.selected { border-color: var(--primary); background: var(--primary-bg); }
+
+    .quiz-btn-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 28px;
+    }
+    .btn {
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(79,70,229,0.3);
+    }
+    .btn-primary:hover { background: #4338ca; transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--card);
+      color: var(--text-muted);
+      border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--bg); }
+
+    .quiz-result {
+      display: none;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--primary);
+      margin-top: 28px;
+      animation: fadeIn .4s ease;
+    }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+    .quiz-result.show { display: block; }
+    .result-score {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--primary);
+      text-align: center;
+    }
+    .result-score span { font-size: 22px; font-weight: 400; color: var(--text-muted); }
+    .result-stage {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 8px 0 20px;
+    }
+    .result-bar-wrap {
+      background: var(--border);
+      border-radius: 100px;
+      height: 12px;
+      margin: 12px 0 28px;
+      overflow: hidden;
+    }
+    .result-bar {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 1s ease;
+    }
+    .result-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .result-actions h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .result-actions ul {
+      padding-left: 20px;
+    }
+    .result-actions li {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+    .observation-box {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+    .observation-box label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .observation-box textarea {
+      width: 100%;
+      min-height: 108px;
+      resize: vertical;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font: inherit;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+    }
+    .observation-box textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.12);
+    }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .dimension-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      background: var(--bg);
+    }
+    .dimension-card.low { border-color: var(--orange); background: var(--orange-bg); }
+    .dimension-name {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .dimension-bar {
+      height: 8px;
+      border-radius: 100px;
+      background: var(--border);
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .dimension-bar span {
+      display: block;
+      height: 100%;
+      border-radius: 100px;
+      background: var(--primary);
+    }
+    .dimension-card.low .dimension-bar span { background: var(--orange); }
+    .dimension-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .recommend-box {
+      border: 1px solid #c7d2fe;
+      background: var(--primary-bg);
+      border-radius: 8px;
+      padding: 18px;
+      margin: 20px 0;
+    }
+    .recommend-box h4 {
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .recommend-box a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .save-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .save-status {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 700;
+    }
+    .save-status.warning { color: var(--orange); }
+    .fallback-notice {
+      display: none;
+      font-size: 13px;
+      color: #92400e;
+      background: var(--orange-bg);
+      border: 1px solid #fcd34d;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .fallback-notice.show { display: block; }
+    .history-panel {
+      margin-top: 28px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .history-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .history-head h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .history-empty {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding: 16px;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+    .history-list {
+      display: grid;
+      gap: 12px;
+    }
+    .history-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      background: var(--bg);
+    }
+    .history-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .history-date {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .history-score {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+    .history-detail {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ───── ACTIVITIES ───── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .activity-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .activity-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .activity-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .activity-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .activity-title { font-size: 16px; font-weight: 700; }
+    .activity-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .tag {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--primary-bg);
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .tag.green { background: var(--green-bg); color: var(--green); }
+    .tag.orange { background: var(--orange-bg); color: var(--orange); }
+    .activity-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    .activity-detail {
+      display: none;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .activity-detail.open { display: block; animation: fadeIn .3s ease; }
+    .activity-detail ol, .activity-detail ul { padding-left: 18px; margin: 8px 0; }
+    .activity-detail li { margin-bottom: 6px; }
+    .activity-detail strong { color: var(--text); }
+    .activity-detail .tip {
+      background: var(--orange-bg);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #92400e;
+    }
+
+    /* ───── PITFALLS ───── */
+    .pitfalls-list { display: flex; flex-direction: column; gap: 16px; }
+    .pitfall {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+    }
+    .pitfall h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+    .pitfall-body { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .pitfall-fix {
+      margin-top: 10px;
+      background: var(--green-bg);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #065f46;
+    }
+    .pitfall-fix strong { font-weight: 700; }
+
+    /* ───── ROADMAP ───── */
+    .roadmap {
+      position: relative;
+      padding-left: 40px;
+    }
+    .roadmap::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+    .roadmap-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    .roadmap-dot {
+      position: absolute;
+      left: -32px;
+      top: 4px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #fff;
+      font-weight: 700;
+    }
+    .roadmap-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .roadmap-month {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .roadmap-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .roadmap-body { font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+    .roadmap-body ul { padding-left: 16px; margin: 8px 0; }
+    .roadmap-body li { margin-bottom: 6px; }
+    .roadmap-milestone {
+      margin-top: 12px;
+      background: var(--accent-bg);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #155e75;
+    }
+    .roadmap-milestone strong { font-weight: 700; }
+
+    /* ───── APPENDIX ───── */
+    .appendix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .evidence-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .evidence-card .stars { font-size: 18px; display: block; margin-bottom: 8px; }
+    .evidence-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .evidence-card p { font-size: 13px; color: var(--text-muted); }
+
+    .limitation {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .limitation:last-child { border-bottom: none; }
+    .limitation-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--orange-bg);
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .limitation p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .limitation strong { color: var(--text); font-weight: 600; }
+
+    /* ───── FOOTER ───── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+    footer strong { color: var(--primary); }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 640px) {
+      section { padding: 40px 0; }
+      .hero { padding: 48px 20px; }
+      .roadmap { padding-left: 28px; }
+      .roadmap-dot { left: -22px; width: 16px; height: 16px; }
+      .roadmap::before { left: 10px; }
+    }
+  </style>
+</head>
+<body>
+<noscript>
+  <div style="padding:14px 20px;background:#fef3c7;color:#92400e;font-size:14px;line-height:1.6;text-align:center;">
+    当前浏览器关闭了 JavaScript，报告内容仍可阅读，但问卷评分、保存记录和复制摘要功能需要启用 JavaScript。
+  </div>
+</noscript>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#summary">执行摘要</a>
+    <a href="#framework">能力框架</a>
+    <a href="#assessment">月度自查</a>
+    <a href="#activities">活动方案</a>
+    <a href="#pitfalls">常见误区</a>
+    <a href="#roadmap">行动路线图</a>
+    <a href="#appendix">附录</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">研究报告 · v1.0 综合整合版</div>
+  <h1>AI 时代儿童核心能力培养研究报告</h1>
+  <p>综合五位专家独立分析，区分强证据结论与专家判断，为家长提供可落地的行动指南</p>
+  <div class="hero-meta">
+    <span>适用年龄：6–12岁（部分3–6岁）</span>
+    <span>五位AI专家交叉质疑</span>
+    <span>纵向研究证据支撑</span>
+  </div>
+</div>
+
+<!-- SECTION 0: SUMMARY -->
+<section id="summary">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">摘</div>
+      <h2>执行摘要</h2>
+    </div>
+
+    <div class="insight-box" style="margin-bottom:28px;">
+      <h3>核心判断</h3>
+      <blockquote>
+        AI 时代真正稀缺的，不是掌握特定技术工具的孩子，而是能在不确定情境中<strong>提出好问题、整合信息、做出有意义判断</strong>的人。这种能力无法靠刷题获得，也无法靠报班"速成"——它生长于真实经历、有代价的探索和持续的内在好奇。
+      </blockquote>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>研究发现一</h3>
+        <p>有强证据支撑的"底层能力"极少被焦虑的家长重视：<strong>自我调节能力（执行功能）、语言表达与情绪管理</strong>，这三项是所有上层能力的地基，纵向研究证明其对人生长期结果的预测力远超学业技能。</p>
+      </div>
+      <div class="summary-card">
+        <h3>研究发现二</h3>
+        <p><strong>"问题定义能力"与"主动性"</strong>是当前最被学校系统忽视、同时被 AI 替代概率最低的能力组合。孩子能主动发现问题，比能回答问题更有价值。</p>
+      </div>
+      <div class="summary-card">
+        <h3>研究发现三</h3>
+        <p><strong>最大的风险不是"学得不够"，而是"学坏了"</strong>：过度结构化的能力培训会损害内在动机，而内在动机才是一切能力生长的土壤。</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <h3 style="font-size:17px;font-weight:700;margin-bottom:16px;color:var(--primary)">最重要的三个行动建议</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+          <p style="font-size:15px;padding-top:4px;">每周留出 <strong>1 个不被安排的下午</strong>，观察孩子自发做什么</p>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+          <p style="font-size:15px;padding-top:4px;">用<strong>开放式问题</strong>替代评价式问题（"你觉得这件事怎么样？"而非"你今天表现好吗？"）</p>
+        </div>
+        <div style="display:flex;gap:14px;align-items:flex-start;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+          <p style="font-size:15px;padding-top:4px;">让孩子完成至少一件<strong>自己发起并主导的小项目</strong>，无论多小</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: FRAMEWORK -->
+<section id="framework">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">一</div>
+      <h2>AI 时代需要哪些能力？</h2>
+    </div>
+
+    <p style="font-size:15px;color:var(--text-muted);margin-bottom:8px;">框架设计逻辑：不是"列出 AI 做不到的清单"，而是回答——<strong>作为有身体、有情感、有意识的人类，孩子独特拥有什么？</strong></p>
+
+    <div class="pyramid">
+      <div class="pyramid-layer l3">
+        <div class="pyramid-layer-label">第三层</div>
+        <div class="pyramid-layer-content">
+          <h4>人类独特能力（AI 替代性极低）</h4>
+          <p>意义感知 · 主动性生成 · 具身判断 · 关系性思维</p>
+        </div>
+      </div>
+      <div class="pyramid-layer l2">
+        <div class="pyramid-layer-label">第二层</div>
+        <div class="pyramid-layer-content">
+          <h4>通用思维能力（AI 替代性中等）</h4>
+          <p>批判性思维 · 逻辑推理 · 信息辨别 · 跨领域连接</p>
+        </div>
+      </div>
+      <div class="pyramid-layer l1">
+        <div class="pyramid-layer-label">第一层</div>
+        <div class="pyramid-layer-content">
+          <h4>底层基础能力（决定其他能力能否生长）</h4>
+          <p>执行功能 · 语言表达 · 情绪调节 · 好奇心</p>
+        </div>
+      </div>
+    </div>
+    <p class="pyramid-note">⚠️ 补齐能力要从第一层开始，底层不稳，上层训练是无效的</p>
+
+    <h3 class="subsection-title">第一层：底层基础能力</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>能力名称</th>
+            <th>核心含义</th>
+            <th>证据强度</th>
+            <th>最佳培养窗口</th>
+            <th>常见误区</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>执行功能</strong></td>
+            <td>专注、抑制冲动、计划执行、任务管理</td>
+            <td><span class="stars">⭐⭐⭐</span> 强</td>
+            <td>3–8岁</td>
+            <td>误认为是"听话"，混淆顺从与自我调节</td>
+          </tr>
+          <tr>
+            <td><strong>语言表达与理解</strong></td>
+            <td>准确描述想法、感受和问题</td>
+            <td><span class="stars">⭐⭐⭐</span> 强</td>
+            <td>0–6岁黄金期，终身可发展</td>
+            <td>只重视"词汇量"，忽视表达自我感受的能力</td>
+          </tr>
+          <tr>
+            <td><strong>情绪调节</strong></td>
+            <td>识别、命名、管理自身情绪</td>
+            <td><span class="stars">⭐⭐⭐</span> 强</td>
+            <td>3–10岁</td>
+            <td>把"不哭不闹"当情绪管理好</td>
+          </tr>
+          <tr>
+            <td><strong>好奇心与探索动机</strong></td>
+            <td>对新事物的持续内在兴趣，不依赖外部奖励</td>
+            <td><span class="stars">⭐⭐</span> 中</td>
+            <td>3–10岁，过度奖励会损害</td>
+            <td>用奖励强化探索，反而破坏内在动机</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:var(--green-bg);border-radius:10px;padding:14px 18px;font-size:13px;color:#065f46;margin-bottom:8px;">
+      <strong>证据说明：</strong>Dunedin 纵向研究（追踪1000人从出生到成年）发现，儿童期自我控制能力对成年后收入、健康、犯罪率的预测力，超过智力和家庭背景。
+    </div>
+
+    <h3 class="subsection-title">第二层：通用思维能力</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>能力名称</th><th>核心含义</th><th>证据强度</th><th>培养窗口</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>逻辑推理</strong></td><td>因果关系识别、条件判断、归纳演绎</td><td><span class="stars">⭐⭐⭐</span> 强</td><td>6–12岁</td></tr>
+          <tr><td><strong>批判性思维</strong></td><td>质疑信息来源，区分事实与观点</td><td><span class="stars">⭐⭐</span> 中</td><td>10岁+</td></tr>
+          <tr><td><strong>信息辨别</strong></td><td>识别可信信息，辨别广告/事实/意见</td><td><span class="stars">⭐⭐</span> 中</td><td>10岁+</td></tr>
+          <tr><td><strong>跨领域连接</strong></td><td>将一个领域的理解迁移到另一个领域</td><td><span class="stars">⭐</span> 弱</td><td>10岁+</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subsection-title">第三层：AI 时代核心人类能力</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>能力名称</th><th>核心含义</th><th>证据强度</th><th>为什么 AI 难替代</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>问题定义能力</strong></td><td>在模糊现实中发现值得解决的问题，并清晰描述它</td><td><span class="stars">⭐⭐</span> 中</td><td>AI 回答问题，人类定义问题</td></tr>
+          <tr><td><strong>主动性生成力</strong></td><td>自发启动行动，而非等待指令；自己提出想法并推进</td><td><span class="stars">⭐⭐</span> 中</td><td>AI 需要 prompt，人类自己生成方向</td></tr>
+          <tr><td><strong>具身判断力</strong></td><td>基于情绪信号、身体感知和真实经验做判断</td><td><span class="stars">⭐⭐</span> 中</td><td>AI 无身体、无真实经历</td></tr>
+          <tr><td><strong>关系性思维</strong></td><td>理解情境与关系（而非孤立信息），包括人际与概念两个层次</td><td><span class="stars">⭐⭐</span> 中</td><td>AI 擅长孤立信息点，难以理解复杂情境</td></tr>
+          <tr><td><strong>意义感知力</strong></td><td>知道"什么对我来说重要"，能形成个人立场</td><td><span class="stars">⭐</span> 弱</td><td>AI 无法真正"在乎"任何事</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="background:var(--orange-bg);border-radius:10px;padding:14px 18px;font-size:13px;color:#92400e;margin-top:8px;">
+      <strong>重要修正：</strong>AI 工具使用属于<strong>时代技能</strong>而非<strong>根本素养</strong>，工具本身迭代极快，具备上述元能力的孩子自然能学会使用新工具；将其列为核心会误导家长追逐最新技术，而忽视底层能力的夯实。
+    </div>
+
+    <h3 class="subsection-title">能力优先级排序</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px;">
+      <div class="card" style="border-top:3px solid var(--red)">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px;">第一优先（立即关注）</div>
+        <ul style="padding-left:16px;font-size:14px;color:var(--text-muted);line-height:1.8;">
+          <li>执行功能（专注/抑制/任务管理）</li>
+          <li>情绪调节</li>
+          <li>语言表达</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--orange)">
+        <div style="font-size:12px;font-weight:700;color:var(--orange);margin-bottom:10px;">第二优先（6岁以上重点发展）</div>
+        <ul style="padding-left:16px;font-size:14px;color:var(--text-muted);line-height:1.8;">
+          <li>好奇心保护</li>
+          <li>问题定义能力</li>
+          <li>主动性生成力</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--green)">
+        <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:10px;">第三优先（10岁以上逐步培养）</div>
+        <ul style="padding-left:16px;font-size:14px;color:var(--text-muted);line-height:1.8;">
+          <li>批判性思维</li>
+          <li>信息辨别</li>
+          <li>关系性思维</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: ASSESSMENT -->
+<section id="assessment">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">二</div>
+      <h2>月度自查问卷（8题）</h2>
+    </div>
+
+    <div class="quiz-intro">
+      <strong>使用前提：</strong>这不是心理测量工具，无法给孩子贴标签或打分。它是<strong>家长的观察提示卡</strong>，帮助你注意到平时容易忽视的信号。<br/>
+      <br/>
+      观察原则：基于<strong>过去1个月的稳定印象</strong>；观察<strong>真实情境</strong>中的行为，而非刻意测试；
+      区分<strong>真实能力与表演能力</strong>——在无人注意、有代价时依然出现的，才算。
+    </div>
+
+    <div id="quiz-form">
+
+      <div class="quiz-group">
+        <div class="quiz-group-title">自我调节与驱动力</div>
+
+        <div class="quiz-question" id="q1">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q1</span>孩子能独立启动并完成一件有步骤的事（作业、手工、游戏等），不需要大人全程催促吗？</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q1" value="3" /> A：多数时候能做到</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="2" /> B：需要提醒1–2次，但最终能完成</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="1" /> C：几乎每个步骤都需要大人推动</label>
+          </div>
+        </div>
+
+        <div class="quiz-question" id="q2">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q2</span>孩子遇到挫折（答错、失败、计划取消）后，能在30分钟内自己恢复状态吗？</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q2" value="3" /> A：基本能，偶尔需要安慰</label>
+            <label class="quiz-option"><input type="radio" name="q2" value="2" /> B：需要大人陪伴才能恢复</label>
+            <label class="quiz-option"><input type="radio" name="q2" value="1" /> C：经常长时间陷入情绪，影响后续活动</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-group">
+        <div class="quiz-group-title">语言与情绪表达</div>
+
+        <div class="quiz-question" id="q3">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q3</span>孩子能用语言描述自己的感受和原因吗？（不只说"好""不好""不知道"）</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q3" value="3" /> A：经常能说清楚"我感觉＿，因为＿"</label>
+            <label class="quiz-option"><input type="radio" name="q3" value="2" /> B：有时能，有时说不清</label>
+            <label class="quiz-option"><input type="radio" name="q3" value="1" /> C：很少能准确描述内在感受</label>
+          </div>
+        </div>
+
+        <div class="quiz-question" id="q4">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q4</span>在没有大人在场或没有奖励的情况下，孩子仍然会主动探索某件感兴趣的事吗？</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q4" value="3" /> A：是，有自己持续关注的领域或活动</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="2" /> B：偶尔，但需要一点触发</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="1" /> C：很少，兴趣主要靠外部驱动</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-group">
+        <div class="quiz-group-title">主动性与问题意识</div>
+
+        <div class="quiz-question" id="q5">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q5</span>孩子会主动提出别人没注意到的问题吗？（而不只是回答大人的问题）</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q5" value="3" /> A：经常，有时问题很有意思</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="2" /> B：偶尔</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="1" /> C：习惯等待别人提问</label>
+          </div>
+        </div>
+
+        <div class="quiz-question" id="q6">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q6</span>孩子在空闲时间（无任务、无屏幕）会自发启动有创意的活动吗？</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q6" value="3" /> A：会，能自己找事情做</label>
+            <label class="quiz-option"><input type="radio" name="q6" value="2" /> B：需要一点引导才能启动</label>
+            <label class="quiz-option"><input type="radio" name="q6" value="1" /> C：通常等待大人安排，或只想要屏幕</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-group">
+        <div class="quiz-group-title">思维灵活性与协作</div>
+
+        <div class="quiz-question" id="q7">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q7</span>孩子面对一个问题时，会尝试不止一种方法吗？</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q7" value="3" /> A：会，有时会想出意想不到的方法</label>
+            <label class="quiz-option"><input type="radio" name="q7" value="2" /> B：有时，但需要被问"还有没有别的方法"才会想</label>
+            <label class="quiz-option"><input type="radio" name="q7" value="1" /> C：通常只找一个方法，找不到就放弃或求助</label>
+          </div>
+        </div>
+
+        <div class="quiz-question" id="q8">
+          <div class="quiz-q-title"><span class="quiz-q-num">Q8</span>孩子在团队或家庭活动中，能关注到别人的需求，而不只顾自己的部分吗？</div>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q8" value="3" /> A：经常注意到，会主动调整</label>
+            <label class="quiz-option"><input type="radio" name="q8" value="2" /> B：提醒后能注意到</label>
+            <label class="quiz-option"><input type="radio" name="q8" value="1" /> C：主要关注自己，很少注意他人状态</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-btn-row">
+        <button class="btn btn-primary" onclick="calcScore()">查看结果</button>
+        <button class="btn btn-secondary" onclick="resetQuiz()">重置</button>
+      </div>
+
+      <div class="observation-box">
+        <label for="observation-note">本月观察备注（可选）</label>
+        <textarea id="observation-note" placeholder="例如：这个月孩子主动发起了什么事？最常卡住的地方是什么？有没有某个变化是在真实情境中自然出现的？"></textarea>
+      </div>
+    </div>
+
+    <div class="quiz-result" id="quiz-result">
+      <div class="result-score" id="result-score">—<span> / 24</span></div>
+      <div class="result-stage" id="result-stage">—</div>
+      <div class="result-bar-wrap">
+        <div class="result-bar" id="result-bar" style="width:0%"></div>
+      </div>
+      <div class="result-desc" id="result-desc"></div>
+      <div class="result-grid" id="dimension-results"></div>
+      <div class="recommend-box" id="recommend-box"></div>
+      <div class="result-actions" id="result-actions"></div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--text-muted);">
+        <strong>重要说明：</strong>分数不是评判孩子的标准，而是帮助家长找到<strong>最值得关注的1–2个方向</strong>。不要试图同时补齐所有短板。
+      </div>
+      <div class="save-row">
+        <button class="btn btn-primary" onclick="saveCurrentResult()">保存本次记录</button>
+        <button class="btn btn-secondary" onclick="copyResultSummary()">复制结果摘要</button>
+        <span class="save-status" id="save-status"></span>
+      </div>
+    </div>
+
+    <div class="history-panel">
+      <div class="history-head">
+        <div>
+          <h3>月度历史记录</h3>
+          <p style="font-size:13px;color:var(--text-muted);">记录只保存在当前浏览器本地，用于纵向观察，不会上传。</p>
+        </div>
+        <button class="btn btn-secondary" onclick="clearHistory()">清空记录</button>
+      </div>
+      <div class="fallback-notice" id="fallback-notice">
+        当前浏览器不支持持久化本地保存，记录会临时保存在本次页面会话中。刷新或关闭页面后，这些记录可能消失。
+      </div>
+      <div id="history-list" class="history-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: ACTIVITIES -->
+<section id="activities">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">三</div>
+      <h2>具体活动方案</h2>
+    </div>
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:24px;">点击卡片展开详情。核心原则：每次只专注 <strong>1个方向</strong>，补齐最有效的发生在孩子被真实兴趣驱动的项目中。</p>
+
+    <div class="activities-grid">
+
+      <div class="activity-card" id="activity-problem" onclick="toggleActivity(this)">
+        <div class="activity-header">
+          <div class="activity-icon" style="background:#eef2ff;">🔍</div>
+          <div>
+            <div class="activity-title">活动一：问题拆解练习</div>
+          </div>
+        </div>
+        <div class="activity-meta">
+          <span class="tag">Q5低分适用</span>
+          <span class="tag green">8岁以上</span>
+          <span class="tag orange">每次10–15分钟</span>
+        </div>
+        <div class="activity-desc">针对问题意识弱、问题定义能力待发展的孩子，培养在"给答案"之前先"理解问题"的习惯。</div>
+        <div class="activity-detail">
+          <ol>
+            <li><strong>选择一个孩子身边的真实问题</strong>（用生活中的事，不要用课本题目）<br/>示例："为什么你觉得每天要写作业？" "学校食堂为什么有人排很长的队？"</li>
+            <li><strong>引导孩子回答三个问题：</strong><ul><li>真正的问题是什么？（描述问题本质）</li><li>谁受到了影响？怎么影响的？</li><li>你能想到几种不同的解决方法？（至少2种）</li></ul></li>
+            <li><strong>家长分享自己的想法，但在孩子说完之后。</strong>不评价对错，而是说"我还没想到这个角度，你为什么这样想？"</li>
+          </ol>
+          <div class="tip">⚠️ 如果孩子说"不知道"就沉默，不要追问。换一个孩子最近感兴趣的话题重新开始。</div>
+        </div>
+      </div>
+
+      <div class="activity-card" id="activity-project" onclick="toggleActivity(this)">
+        <div class="activity-header">
+          <div class="activity-icon" style="background:#f0fdf4;">🌱</div>
+          <div>
+            <div class="activity-title">活动二：自由项目时间</div>
+          </div>
+        </div>
+        <div class="activity-meta">
+          <span class="tag">Q6低分适用</span>
+          <span class="tag green">6岁以上</span>
+          <span class="tag orange">每次1–2小时</span>
+        </div>
+        <div class="activity-desc">针对主动性弱、空闲时间等待安排的孩子，重新激活自主性，让孩子发现真正感兴趣的事。</div>
+        <div class="activity-detail">
+          <ol>
+            <li>提前告诉孩子：<strong>"这段时间是你自己的，没有任务，没有安排，你来决定做什么。"</strong></li>
+            <li><strong>家长离开这个空间，或至少不主动介入。</strong>（这是最难的一步——多数家长15分钟内就会忍不住建议）</li>
+            <li>如果孩子说"没什么好做的"，只说："嗯，这种感觉我也有过。你可以就坐着，或者想想看有没有什么很久没做的事。"然后保持沉默。</li>
+            <li>30分钟后若孩子还在发呆，可问一个开放问题："有没有什么事情是你一直想做但没做的？"——然后停止说话。</li>
+          </ol>
+          <div class="tip">⚠️ 前2–3次孩子可能真的什么都不做。这是正常的——他们需要时间重新激活自主性。坚持4–6周后多数孩子会开始自发启动活动。</div>
+        </div>
+      </div>
+
+      <div class="activity-card" id="activity-story" onclick="toggleActivity(this)">
+        <div class="activity-header">
+          <div class="activity-icon" style="background:#fff7ed;">📖</div>
+          <div>
+            <div class="activity-title">活动三：故事接龙与开放创作</div>
+          </div>
+        </div>
+        <div class="activity-meta">
+          <span class="tag">Q7低分适用</span>
+          <span class="tag green">5岁以上</span>
+          <span class="tag orange">每次10–20分钟</span>
+        </div>
+        <div class="activity-desc">针对单一思维、不愿尝试多种方法的孩子，帮助孩子不再害怕"想出来的东西是错的"。</div>
+        <div class="activity-detail">
+          <ol>
+            <li>家长开头说一句话：<strong>"从前有一只猫，它发现自己的爪子今天会发光……"</strong></li>
+            <li>孩子接下去说一段（任何内容都可以）。家长原则：<strong>接受一切，不纠正方向</strong>，不管故事被带向多奇怪的地方。</li>
+            <li>来回交替，每人说1–3句。如果故事陷入死局，家长说"但是突然发生了一件谁都没想到的事……"</li>
+          </ol>
+          <strong>进阶版（8岁以上）：</strong>在故事中途加入限制条件——"主角忽然不能说话了，怎么办？"——训练在约束条件下的创造力。
+          <div class="tip">预期效果：孩子开始在日常问题中出现"要不然我们换一种方法试试"的表达。</div>
+        </div>
+      </div>
+
+      <div class="activity-card" id="activity-emotion" onclick="toggleActivity(this)">
+        <div class="activity-header">
+          <div class="activity-icon" style="background:#fdf2f8;">❤️</div>
+          <div>
+            <div class="activity-title">活动四：情绪侦探游戏</div>
+          </div>
+        </div>
+        <div class="activity-meta">
+          <span class="tag">Q2/Q3低分适用</span>
+          <span class="tag green">4岁以上</span>
+          <span class="tag orange">事件驱动</span>
+        </div>
+        <div class="activity-desc">针对情绪调节弱、语言表达弱的孩子，帮助孩子建立情绪命名能力，减少家庭摩擦。</div>
+        <div class="activity-detail">
+          <ol>
+            <li>当孩子明显有情绪时，<strong>先不急于安慰或纠正</strong>，蹲下来说："我注意到你现在好像有什么感觉，我们来侦探一下，这个感觉叫什么名字？"</li>
+            <li>如果说不出来，提供2–3个选项："是觉得委屈？还是愤怒？还是有点失望？"——<strong>不要直接说"你一定是生气了"</strong>，给孩子选择空间。</li>
+            <li>当孩子选出一个词后，问："这个感觉在你身体哪里？"（肚子？胸口？脑袋？）</li>
+            <li><strong>什么都不用做了</strong>。命名本身就有调节作用，不需要紧接着"解决问题"。</li>
+          </ol>
+          <div class="tip">预期效果：孩子逐渐能在情绪来临时自己说出"我现在很＿"，而不是直接行动；家长和孩子的沟通摩擦会明显减少。</div>
+        </div>
+      </div>
+
+      <div class="activity-card" id="activity-info" onclick="toggleActivity(this)">
+        <div class="activity-header">
+          <div class="activity-icon" style="background:#ecfeff;">🔎</div>
+          <div>
+            <div class="activity-title">活动五：真假信息挑战</div>
+          </div>
+        </div>
+        <div class="activity-meta">
+          <span class="tag">信息辨别弱适用</span>
+          <span class="tag green">9岁以上</span>
+          <span class="tag orange">每次10分钟</span>
+        </div>
+        <div class="activity-desc">针对信息辨别能力弱、批判性思维待发展的孩子，培养对 AI 生成内容、广告、谣言的初步辨别意识。</div>
+        <div class="activity-detail">
+          <ol>
+            <li>找到3条信息（新闻标题、广告语、网上"小知识"）：一条来自相对可信来源，一条来自无法确认来源的地方，一条明显是广告或夸大。</li>
+            <li>让孩子判断：哪条最可信？为什么？</li>
+            <li><strong>引导孩子问三个问题：</strong><ul><li>这是谁说的？他们有什么立场？</li><li>他们有没有提供证据？</li><li>还有没有别的信息说了不同的话？</li></ul></li>
+            <li>家长分享自己的判断，包括<strong>"我也不确定的部分"</strong>——让孩子看到大人也面对不确定性。</li>
+          </ol>
+          <div class="tip">预期效果：孩子开始对信息产生基本的怀疑习惯；面对 AI 生成的内容、广告、谣言时有初步辨别意识。</div>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 class="subsection-title" style="margin-top:48px;">日常渗透：替换式方法</h3>
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">以下方法不需要额外时间，在日常行为中自然发生：</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>原有习惯</th><th>替换为</th><th>培养的能力</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>问"今天学了什么？"</td><td>问"今天你有没有发现什么有意思的事？"</td><td>好奇心、意义感知</td></tr>
+          <tr><td>帮孩子解决问题</td><td>问"你觉得可以怎么试试？"</td><td>主动性生成力</td></tr>
+          <tr><td>告诉孩子"这样不对"</td><td>问"你当时是怎么想的？"</td><td>语言表达、自我反思</td></tr>
+          <tr><td>安排所有空闲时间</td><td>每周留1个"无安排"下午</td><td>主动性</td></tr>
+          <tr><td>只讨论学校表现</td><td>餐桌上各分享1件"今天卡住的事"</td><td>问题意识、情绪表达</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: PITFALLS -->
+<section id="pitfalls">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">四</div>
+      <h2>需要警惕的误区</h2>
+    </div>
+
+    <div class="pitfalls-list">
+
+      <div class="pitfall">
+        <h3>误区一：把"听话"当"能力强"</h3>
+        <div class="pitfall-body">顺从与执行功能是不同的。真正的自我调节是孩子能调动自己的内在资源，而不是依赖外部指令运作。一个"听话"的孩子，面对没有指令的情境（AI 时代的常态）反而可能最无所适从。</div>
+        <div class="pitfall-fix"><strong>纠正方向：</strong>鼓励孩子表达不同意见，在安全范围内允许不服从，重视孩子"自己决定"的经历。</div>
+      </div>
+
+      <div class="pitfall">
+        <h3>误区二：把"AI 能力培养"变成新的课程压力</h3>
+        <div class="pitfall-body">教育心理学有非常稳定的发现——<strong>过度结构化的训练会降低内在动机</strong>，尤其是在科学、创造、编程等领域。被培训"毁掉"兴趣的孩子，比没接触过的孩子更难重建对这个领域的热情。</div>
+        <div class="pitfall-fix"><strong>纠正方向：</strong>提供接触机会，但让孩子主导探索节奏。家长的角色是"资源提供者"而非"课程设计者"。</div>
+      </div>
+
+      <div class="pitfall">
+        <h3>误区三：把"窗口期焦虑"当成行动动力</h3>
+        <div class="pitfall-body">大脑终身具有可塑性，"关键期"是"发展优势期"而非"错过就不可逆的窗口"。焦虑驱动的密集干预往往过度结构化，反而不如自然环境中的有机发展。</div>
+        <div class="pitfall-fix"><strong>纠正方向：</strong>将窗口期理解为"这段时间投入的效率更高"，而非"错过了就完了"。减少焦虑，保持持续但不紧迫的关注。</div>
+      </div>
+
+      <div class="pitfall">
+        <h3>误区四：以为标准化测试能精确测出 AI 时代的"短板"</h3>
+        <div class="pitfall-body">大多数商业化 AI 能力测评缺乏效度研究支撑。儿童发展高度非线性，同一孩子在不同情境下表现差异极大；测试测到的往往是"在测试情境下的表演"，而非真实的能力倾向。</div>
+        <div class="pitfall-fix"><strong>纠正方向：</strong>以情境观察为主，以测试为辅（仅作参考）。本报告的观察指标表，比多数商业测评更贴近真实状态。</div>
+      </div>
+
+      <div class="pitfall">
+        <h3>误区五：过度依赖电子产品，同时又过度焦虑屏幕时间</h3>
+        <div class="pitfall-body">短视频和游戏的问题不在于"电子"，在于它们提供的<strong>即时满足感</strong>会降低孩子对"慢反馈"活动（阅读、手工、长期项目）的耐受能力，这直接损害执行功能和主动性。</div>
+        <div class="pitfall-fix"><strong>纠正方向：</strong>不需要完全禁止屏幕，但要<strong>保证有一类"慢反馈"活动每周稳定出现</strong>：阅读、手工、户外探索、长期项目。</div>
+      </div>
+
+      <div class="pitfall">
+        <h3>误区六：把观察清单当测量工具，给孩子打分排名</h3>
+        <div class="pitfall-body">本报告的清单不具备心理测量学意义上的信度和效度，无法用于排名或诊断。硬性打分并与他人比较，会将孩子的发展变成一种绩效评估，损害其安全感和内在动机。</div>
+        <div class="pitfall-fix"><strong>纠正方向：</strong>清单只用于家长的自我观察，不与孩子直接分享分数，不横向比较，只纵向观察孩子自己的变化趋势。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: ROADMAP -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">五</div>
+      <h2>6个月行动路线图</h2>
+    </div>
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:32px;">设计原则：每月只聚焦1件事；每项行动周时间投入不超过30分钟；以"环境调整"为主，以"活动训练"为辅。</p>
+
+    <div class="roadmap">
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot">1</div>
+        <div class="roadmap-card">
+          <div class="roadmap-month">第一个月</div>
+          <div class="roadmap-title">观察与清零</div>
+          <div class="roadmap-body">
+            <p>月度目标：在开始任何培养计划之前，先真实了解孩子现在的状态。</p>
+            <ul>
+              <li>完成本报告月度自查清单（一次性，20分钟）</li>
+              <li>进行1次"无安排下午"实验，观察孩子做什么，不干预</li>
+              <li><strong>停掉1件目前占时间但效果存疑的事</strong>（某个孩子明显不感兴趣的课外班）</li>
+            </ul>
+            <p><strong>要避免的：</strong>在这个月开始新的"培养计划"——先观察，再行动。</p>
+          </div>
+          <div class="roadmap-milestone"><strong>里程碑：</strong>月底你能回答：孩子最近自发做的事是什么？最常卡住的地方是什么？</div>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot">2</div>
+        <div class="roadmap-card">
+          <div class="roadmap-month">第二个月</div>
+          <div class="roadmap-title">建立一个稳定的日常惯例</div>
+          <div class="roadmap-body">
+            <p>根据第一个月的观察，选择以下一项：</p>
+            <ul>
+              <li>Q1/Q2低分 → 每晚睡前5分钟：各说一件"今天卡住的事和后来怎么处理的"</li>
+              <li>Q3/Q4低分 → 每天餐桌上一个开放问题："今天你发现了什么有意思的事？"</li>
+              <li>Q5/Q6低分 → 每周固定一个"无安排下午"</li>
+            </ul>
+          </div>
+          <div class="roadmap-milestone"><strong>里程碑：</strong>这个惯例在月底仍然在执行，且孩子不排斥（甚至开始期待）。</div>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot">3</div>
+        <div class="roadmap-card">
+          <div class="roadmap-month">第三个月</div>
+          <div class="roadmap-title">引入一个具体活动</div>
+          <div class="roadmap-body">
+            <p>基于确认的1个主要短板，开始执行对应的具体活动（选择活动一到五中的一个）。</p>
+            <ul>
+              <li>选孩子目前有<strong>一点兴趣</strong>的活动，而不是"最需要补的"</li>
+              <li>前两周可以是家长主导，第三周开始逐渐让孩子主导节奏</li>
+              <li>每周1–2次，每次10–20分钟，连续执行4周</li>
+            </ul>
+          </div>
+          <div class="roadmap-milestone"><strong>里程碑：</strong>孩子是否开始主动提起这个活动，或在日常中出现相关行为变化？</div>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot">4</div>
+        <div class="roadmap-card">
+          <div class="roadmap-month">第四个月</div>
+          <div class="roadmap-title">支持孩子的一个自发项目</div>
+          <div class="roadmap-body">
+            <p>找到孩子自己想做的一件事，提供支持但不主导。</p>
+            <p>项目参考（可选）：设计一套游戏规则 / 做一本小书 / 策划一次家庭活动 / 研究一个感兴趣的问题</p>
+            <p>问孩子："你有没有想把这件事做得更完整或更好？需要我帮什么？"然后<strong>让孩子做决定</strong>。</p>
+          </div>
+          <div class="roadmap-milestone"><strong>里程碑：</strong>项目有可见进展，孩子能说出"我接下来想做的下一步是＿"。</div>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot">5</div>
+        <div class="roadmap-card">
+          <div class="roadmap-month">第五个月</div>
+          <div class="roadmap-title">评估与校准</div>
+          <div class="roadmap-body">
+            <p>再次完成月度自查清单，与第一个月对比。反思三个问题：</p>
+            <ul>
+              <li>孩子的哪些变化是<strong>真实的</strong>（在多种情境下自然出现），而非表演的？</li>
+              <li>哪个活动对孩子的影响最大？为什么？</li>
+              <li>我（家长）在这个过程中有没有不自觉地过度干预？</li>
+            </ul>
+          </div>
+          <div class="roadmap-milestone"><strong>里程碑：</strong>你能说出孩子在1–2个具体维度上的真实变化。</div>
+        </div>
+      </div>
+
+      <div class="roadmap-item">
+        <div class="roadmap-dot">6</div>
+        <div class="roadmap-card">
+          <div class="roadmap-month">第六个月</div>
+          <div class="roadmap-title">扩大真实经历的密度</div>
+          <div class="roadmap-body">
+            <p>让孩子接触更多有真实后果的小事，替代"模拟训练"：</p>
+            <ul>
+              <li><strong>增加：</strong>让孩子独立完成1件以前由大人代劳的事；接触差异化的人和环境；允许孩子经历合理的失败并自己处理</li>
+              <li><strong>减少：</strong>替孩子解决可以自己解决的问题；在孩子失败前介入"保护"</li>
+            </ul>
+          </div>
+          <div class="roadmap-milestone">
+            <strong>6个月终点检验：</strong><br/>
+            1. 孩子最近有没有主动发起一件事，并推进到有结果？<br/>
+            2. 孩子在遇到挫折时，有没有比6个月前更快地自己恢复？<br/>
+            3. 孩子最近有没有提出一个让你意外的问题或想法？<br/>
+            <em>三个问题中有两个的答案是"是"，这6个月的方向是对的。</em>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: APPENDIX -->
+<section id="appendix">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">附</div>
+      <h2>附录：证据强度与报告说明</h2>
+    </div>
+
+    <h3 class="subsection-title" style="margin-top:0;">证据强度说明</h3>
+    <div class="appendix-grid">
+      <div class="evidence-card">
+        <span class="stars">⭐⭐⭐</span>
+        <h4>强</h4>
+        <p>有多项纵向研究或大规模实证研究支持，结论较为稳定</p>
+      </div>
+      <div class="evidence-card">
+        <span class="stars">⭐⭐</span>
+        <h4>中</h4>
+        <p>有理论框架和部分实证支持，但长期效果或普适性仍有待验证</p>
+      </div>
+      <div class="evidence-card">
+        <span class="stars">⭐</span>
+        <h4>弱</h4>
+        <p>主要基于专家判断、趋势分析或小规模研究，需审慎对待</p>
+      </div>
+      <div class="evidence-card">
+        <span style="font-size:18px;display:block;margin-bottom:8px;">💬</span>
+        <h4>专家推测</h4>
+        <p>逻辑上合理，但缺乏直接实证依据，实践时应结合具体情况调整</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title">本报告的局限性</h3>
+    <div class="card">
+      <div class="limitation">
+        <div class="limitation-num">1</div>
+        <p><strong>未来不确定性：</strong>AI 技术的迭代速度超过任何教育研究的追踪周期，5年后的能力需求可能与今天的判断有出入。本报告中"底层能力"的重要性基于长期纵向研究，相对稳定；"AI时代核心能力"的判断则具有更高的不确定性。</p>
+      </div>
+      <div class="limitation">
+        <div class="limitation-num">2</div>
+        <p><strong>个体差异：</strong>本报告假设的是"典型发展儿童"，对于有神经多样性特质（ADHD、自闭症谱系等）的孩子，发展路径和优先级可能显著不同，建议结合专业评估使用。</p>
+      </div>
+      <div class="limitation">
+        <div class="limitation-num">3</div>
+        <p><strong>文化与资源背景：</strong>部分建议在不同家庭资源条件下的可行性存在差异。本报告尽量选择无需额外经济投入的方案，但时间投入仍是真实门槛。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>基于 <strong>rating.md · v1.0 综合整合版</strong> 制作 · 五位专家独立分析与交叉质疑</p>
+  <p style="margin-top:8px;font-size:12px;opacity:.6;">本报告为研究参考，不替代专业教育评估和心理咨询</p>
+</footer>
+
+<script>
+  // ───── QUIZ ─────
+  const STORAGE_KEY = 'ratingAI.monthlyRecords.v1';
+  const questionMeta = {
+    1: { name: '执行功能', note: '独立启动、计划执行、任务管理', activity: null, action: '先建立固定日常节奏，再把任务拆成孩子能自己启动的一小步。' },
+    2: { name: '情绪恢复', note: '挫折后的恢复速度和安全感', activity: 'activity-emotion', action: '优先做“情绪侦探游戏”，先命名情绪，再谈解决办法。' },
+    3: { name: '语言表达', note: '说清感受、原因和想法', activity: 'activity-emotion', action: '每天增加一次不评价的表达机会，例如餐桌分享“今天卡住的事”。' },
+    4: { name: '好奇心', note: '无奖励时的自发探索', activity: 'activity-project', action: '保留无安排时间，观察孩子自己会靠近什么。' },
+    5: { name: '问题意识', note: '主动提出问题，而不只回答问题', activity: 'activity-problem', action: '用生活里的真实问题做“问题拆解练习”。' },
+    6: { name: '主动性', note: '空闲时自发启动事情', activity: 'activity-project', action: '每周固定一次“自由项目时间”，家长提供资源但不主导。' },
+    7: { name: '思维灵活性', note: '尝试多种方法、接受变化', activity: 'activity-story', action: '用“故事接龙与开放创作”练习多种可能性。' },
+    8: { name: '协作关注', note: '在关系中看见他人需求', activity: null, action: '在家务或家庭活动中给孩子一个真实负责的角色。' }
+  };
+  let currentResult = null;
+  let sessionRecords = [];
+  const storageAvailable = canUseLocalStorage();
+
+  function calcScore() {
+    let total = 0;
+    let answered = 0;
+    const answers = {};
+
+    for (let i = 1; i <= 8; i++) {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) {
+        const v = parseInt(sel.value);
+        total += v;
+        answered++;
+        answers[i] = v;
+        document.getElementById(`q${i}`).classList.add('answered');
+      }
+    }
+
+    if (answered < 8) {
+      alert('请完成全部 8 道题后再查看结果。');
+      return;
+    }
+
+    const lowQ = getFocusQuestions(answers);
+    const note = document.getElementById('observation-note').value.trim();
+    currentResult = {
+      id: Date.now(),
+      date: new Date().toISOString(),
+      total,
+      answers,
+      lowQ,
+      stage: getStage(total),
+      note
+    };
+
+    const resultEl = document.getElementById('quiz-result');
+    resultEl.classList.add('show');
+    document.getElementById('result-score').innerHTML = `${total}<span> / 24</span>`;
+
+    const pct = Math.round((total / 24) * 100);
+    setTimeout(() => {
+      document.getElementById('result-bar').style.width = pct + '%';
+    }, 100);
+
+    let stage, desc, actions;
+
+    if (total >= 20) {
+      stage = '稳定发展期';
+      desc = '底层能力较扎实，孩子在自我调节、语言表达和情绪管理方面均有较好的基础。重点方向是让已有能力在真实挑战中得到锻炼，并保护孩子的好奇心和主动性不被过度结构化的安排压抑。';
+      actions = `<h4>重点行动方向：</h4><ul>
+        <li>让孩子主导一次家庭决策（选择周末去哪里、怎么安排）</li>
+        <li>支持孩子完成一个持续4周以上的自发项目</li>
+        <li>引入有难度的真实问题（如：家里电费为什么这个月变多了？）</li>
+        <li>减少给孩子的现成答案，增加"你觉得呢？"的频率</li>
+      </ul>`;
+    } else if (total >= 14) {
+      stage = '发展中期';
+      desc = '孩子有基础但部分维度不够稳定，需要有意识地支撑。找出你在哪几题得分最低，针对性关注那1–2个维度，而不是同时补齐所有短板。';
+      const lowNames = lowQ.map(q => questionMeta[q].name).join('、');
+      actions = `<h4>需要关注的维度：${lowNames || '请留意各题分布'}</h4><ul>
+        <li>每次只聚焦1个方向，连续执行6–8周再评估</li>
+        <li>参考"具体活动方案"选择对应活动</li>
+        <li>先建立一个日常惯例，再引入具体活动</li>
+        <li>避免同时开展多个"培养计划"</li>
+      </ul>`;
+    } else {
+      stage = '需要关注期';
+      desc = '底层能力尚在建立阶段，过早追求上层能力效果有限。此阶段最需要的不是"训练"，而是调整日常环境结构，建立稳定感、安全感和基本的语言沟通。';
+      actions = `<h4>优先任务：</h4><ul>
+        <li>建立稳定的日常节奏（固定时间做固定的事）</li>
+        <li>增加语言表达机会（餐桌上各说一件有意思的事，不评价对错）</li>
+        <li>情绪命名练习（孩子有情绪时先命名而非立即给建议）</li>
+        <li>减少过度保护，允许孩子承担小后果</li>
+        ${answers[2] === 1 && answers[3] === 1 ? '<li style="color:var(--red)"><strong>Q2和Q3均为C，建议优先关注情绪调节，其他能力的培养在情绪安全的基础上才有意义。</strong></li>' : ''}
+      </ul>`;
+    }
+
+    document.getElementById('result-stage').textContent = stage;
+    document.getElementById('result-desc').textContent = desc;
+    document.getElementById('dimension-results').innerHTML = renderDimensions(answers, lowQ);
+    document.getElementById('recommend-box').innerHTML = renderRecommendation(total, answers, lowQ);
+    document.getElementById('result-actions').innerHTML = actions;
+    setSaveStatus('');
+
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function resetQuiz() {
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('answered'));
+    document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    document.getElementById('observation-note').value = '';
+    const resultEl = document.getElementById('quiz-result');
+    resultEl.classList.remove('show');
+    document.getElementById('result-bar').style.width = '0%';
+    setSaveStatus('');
+    currentResult = null;
+  }
+
+  function getStage(total) {
+    if (total >= 20) return '稳定发展期';
+    if (total >= 14) return '发展中期';
+    return '需要关注期';
+  }
+
+  function getFocusQuestions(answers) {
+    const sorted = Object.entries(answers)
+      .map(([q, score]) => ({ q: Number(q), score }))
+      .sort((a, b) => a.score - b.score || a.q - b.q);
+    const min = sorted[0].score;
+    if (min === 3) return [];
+    return sorted.filter(item => item.score === min).slice(0, 2).map(item => item.q);
+  }
+
+  function renderDimensions(answers, lowQ) {
+    return Object.entries(questionMeta).map(([q, meta]) => {
+      const score = answers[q];
+      const pct = Math.round((score / 3) * 100);
+      const low = lowQ.includes(Number(q)) && score < 3;
+      return `<div class="dimension-card ${low ? 'low' : ''}">
+        <div class="dimension-name"><span>Q${q} ${meta.name}</span><span>${score}/3</span></div>
+        <div class="dimension-bar"><span style="width:${pct}%"></span></div>
+        <div class="dimension-note">${meta.note}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderRecommendation(total, answers, lowQ) {
+    if (total >= 20 && Object.values(answers).every(v => v >= 2)) {
+      return `<h4>下个月建议</h4>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">不要急着增加训练。更适合给孩子一个持续4周以上的真实项目，让孩子自己定义目标、推进过程，并在月底复盘一次。</p>`;
+    }
+
+    const items = lowQ.map(q => {
+      const meta = questionMeta[q];
+      const link = meta.activity ? ` <a href="#${meta.activity}" onclick="openActivity('${meta.activity}')">查看对应活动</a>` : '';
+      return `<li><strong>Q${q} ${meta.name}：</strong>${meta.action}${link}</li>`;
+    }).join('');
+
+    const emotionWarning = answers[2] === 1 && answers[3] === 1
+      ? '<p style="font-size:14px;color:var(--red);font-weight:700;margin-top:10px;">Q2 和 Q3 同时为 C：建议先把情绪安全和表达能力放在第一位，其他上层能力暂缓推进。</p>'
+      : '';
+
+    return `<h4>优先关注 1–2 个方向</h4>
+      <ul style="padding-left:18px;font-size:14px;color:var(--text-muted);line-height:1.8;">${items}</ul>
+      ${emotionWarning}`;
+  }
+
+  function saveCurrentResult() {
+    if (!currentResult) {
+      alert('请先完成问卷并查看结果。');
+      return;
+    }
+    currentResult.note = document.getElementById('observation-note').value.trim();
+    const records = getHistory();
+    records.unshift({ ...currentResult, id: Date.now(), date: new Date().toISOString() });
+    const saved = setHistory(records.slice(0, 24));
+    setSaveStatus(saved ? '已保存到本地历史记录' : '已临时保存到当前会话', saved ? 'ok' : 'warning');
+    renderHistory();
+  }
+
+  function getHistory() {
+    if (!storageAvailable) return sessionRecords;
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch (err) {
+      return sessionRecords;
+    }
+  }
+
+  function setHistory(records) {
+    if (!storageAvailable) {
+      sessionRecords = records;
+      return false;
+    }
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      return true;
+    } catch (err) {
+      sessionRecords = records;
+      return false;
+    }
+  }
+
+  function renderHistory() {
+    const list = document.getElementById('history-list');
+    const records = getHistory();
+    if (!records.length) {
+      list.innerHTML = '<div class="history-empty">还没有保存记录。完成问卷后点击“保存本次记录”，这里会显示月度变化。</div>';
+      return;
+    }
+
+    list.innerHTML = records.map(record => {
+      const focus = (record.lowQ || []).map(q => `Q${q} ${questionMeta[q].name}`).join('、') || '无明显低项';
+      const note = record.note ? `<div class="history-detail"><strong>备注：</strong>${escapeHtml(record.note)}</div>` : '';
+      return `<div class="history-item">
+        <div class="history-main">
+          <div>
+            <div class="history-date">${formatDate(record.date)}</div>
+            <div class="history-detail">${record.stage} · 关注：${focus}</div>
+          </div>
+          <div class="history-score">${record.total}/24</div>
+        </div>
+        ${note}
+      </div>`;
+    }).join('');
+  }
+
+  function clearHistory() {
+    if (!confirm('确定清空本地历史记录吗？此操作不会影响当前问卷选择。')) return;
+    sessionRecords = [];
+    if (storageAvailable) {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (err) {
+        // Ignore storage failures and keep the page usable.
+      }
+    }
+    setSaveStatus('');
+    renderHistory();
+  }
+
+  function copyResultSummary() {
+    if (!currentResult) {
+      alert('请先完成问卷并查看结果。');
+      return;
+    }
+    const focus = currentResult.lowQ.map(q => `Q${q} ${questionMeta[q].name}`).join('、') || '无明显低项';
+    const note = document.getElementById('observation-note').value.trim();
+    const text = `AI时代儿童核心能力月度自查
+日期：${formatDate(new Date().toISOString())}
+总分：${currentResult.total}/24
+阶段：${currentResult.stage}
+优先关注：${focus}
+${note ? `本月观察：${note}` : ''}`;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        setSaveStatus('结果摘要已复制');
+      }).catch(() => fallbackCopy(text));
+    } else {
+      fallbackCopy(text);
+    }
+  }
+
+  function fallbackCopy(text) {
+    const area = document.createElement('textarea');
+    area.value = text;
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand('copy');
+    area.remove();
+    setSaveStatus('结果摘要已复制');
+  }
+
+  function canUseLocalStorage() {
+    try {
+      const testKey = `${STORAGE_KEY}.test`;
+      localStorage.setItem(testKey, '1');
+      localStorage.removeItem(testKey);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function setSaveStatus(text, type = 'ok') {
+    const status = document.getElementById('save-status');
+    status.textContent = text;
+    status.classList.toggle('warning', type === 'warning');
+  }
+
+  function updateFallbackNotice() {
+    const notice = document.getElementById('fallback-notice');
+    notice.classList.toggle('show', !storageAvailable);
+  }
+
+  function openActivity(id) {
+    const card = document.getElementById(id);
+    if (!card) return;
+    document.querySelectorAll('.activity-detail').forEach(d => d.classList.remove('open'));
+    card.querySelector('.activity-detail').classList.add('open');
+  }
+
+  function formatDate(value) {
+    return new Date(value).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+  }
+
+  function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, char => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[char]));
+  }
+
+  // Highlight selected option
+  document.querySelectorAll('.quiz-option').forEach(label => {
+    label.addEventListener('click', () => {
+      const name = label.querySelector('input').name;
+      document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+        r.closest('.quiz-option').classList.remove('selected');
+      });
+      label.classList.add('selected');
+    });
+  });
+
+  updateFallbackNotice();
+  renderHistory();
+
+  // ───── ACTIVITIES ─────
+  function toggleActivity(card) {
+    const detail = card.querySelector('.activity-detail');
+    const isOpen = detail.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.activity-detail').forEach(d => d.classList.remove('open'));
+    if (!isOpen) detail.classList.add('open');
+  }
+
+  // ───── NAV ACTIVE ─────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
